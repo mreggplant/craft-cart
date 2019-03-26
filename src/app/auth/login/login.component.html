@@ -1,3 +1,21 @@
-<p>
-  login works!
-</p>
+You need to login:
+<form class="login-form" name="login" autocomplete="off">
+    <header>
+        <div>
+            Craft cart
+        </div>
+    </header>
+    <fieldset>
+        <div>
+            Email: <input name="uid" type="email" [(ngModel)]="uid">
+        </div>
+        <div>
+            Password: <input name="pwd" type="password" [(ngModel)]="pwd">
+        </div>
+        <div class="submit-btn">
+            <button class="login" type="submit" name="login" (click)="authService.login(uid, pwd)">
+                <i class="fa-sign-in fa"></i>
+            </button>
+        </div>
+    </fieldset>
+</form>
