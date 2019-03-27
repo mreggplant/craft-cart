@@ -1,0 +1,23 @@
+:host {
+    .cart-list {
+        display: flex;
+        flex-flow: column;
+        justify-content: space-evenly;
+
+        .cart-item-thumb {
+            display: block;
+            padding: 4px;
+            margin-bottom: 21px;
+            line-height: 1.42857143;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 0;
+            transition: all .2s ease-in-out;
+
+            img {
+                width: 200px;
+                height: 220px;
+            }
+        }
+    }
+}

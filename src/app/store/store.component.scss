@@ -1,0 +1,23 @@
+:host {
+    .store-list {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+
+        .store-item-thumb {
+            display: block;
+            padding: 4px;
+            margin-bottom: 21px;
+            line-height: 1.42857143;
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 0;
+            transition: all .2s ease-in-out;
+
+            img {
+                width: 200px;
+                height: 220px;
+            }
+        }
+    }
+}

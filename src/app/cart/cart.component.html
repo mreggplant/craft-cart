@@ -1,3 +1,22 @@
-<p>
-  cart works!
-</p>
+<div class="cart-list">
+    <div *ngIf="cartItems === 0">
+        Your cart is empty!
+    </div>
+    <div *ngFor="let c of cart" class="cart-item">
+        <div class="cart-item-thumb">
+            Thumb: <img src='{{c.imageUrl}}'>
+        </div>
+        <div class="cart-item-title">
+            Title: {{c.title}}
+        </div>
+        <div class="cart-item-brand">
+            Brand: {{c.brand}}
+        </div>
+        <div class="cart-item-description">
+            Description: {{c.description}}
+        </div>
+        <div class="cart-item-price">
+            Price: $ {{c.price}} <button (click)="remove(c)">Remove</button>
+        </div>
+    </div>
+</div>

@@ -1,28 +1,22 @@
-import {Component} from '@angular/core';
-import {AngularFireDatabase} from 'angularfire2/database';
+import {Component, OnInit} from '@angular/core';
 
 import {AuthService} from './auth/auth.service';
+import {CartService} from './cart/cart.service';
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    providers: [AuthService]
+    styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
     title = 'craft-cart';
 
-    private products: any[];
 
-    uid = '';
-    pwd = '';
+    constructor(public authService: AuthService, private cartService: CartService) {
+    }
 
-    constructor(private db: AngularFireDatabase, public authService: AuthService) {
-        db.list('/products')
-            .valueChanges()
-            .subscribe(products => {
-                this.products = products;
-                console.log(this.products);
-            });
+    ngOnInit() {
+        this.cartService.getData();
     }
 }

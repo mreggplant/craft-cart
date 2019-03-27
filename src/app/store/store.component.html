@@ -1,3 +1,19 @@
-<p>
-  store works!
-</p>
+<div class="store-list">
+    <div *ngFor="let p of products" class="store-item">
+        <div class="store-item-thumb">
+            Thumb: <img src='{{p.imageUrl}}'>
+        </div>
+        <div class="store-item-title">
+            Title: {{p.title}}
+        </div>
+        <div class="store-item-brand">
+            Brand: {{p.brand}}
+        </div>
+        <div class="store-item-description">
+            Description: {{p.description}}
+        </div>
+        <div class="store-item-price">
+            Price: $ {{p.price}} <button (click)="addToCart(p)">Add to Cart</button>
+        </div>
+    </div>
+</div>

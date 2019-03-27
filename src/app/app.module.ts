@@ -12,6 +12,8 @@ import {CustomMaterialModule} from './core/custom.material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CartModule} from './cart/cart.module';
 import {StoreModule} from './store/store.module';
+import {AuthService} from './auth/auth.service';
+import {CartService} from './cart/cart.service';
 
 @NgModule({
     declarations: [AppComponent],
@@ -28,7 +30,8 @@ import {StoreModule} from './store/store.module';
         CartModule,
         StoreModule
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [AuthService, CartService]
 })
 export class AppModule {
 }
