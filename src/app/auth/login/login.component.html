@@ -1,21 +1,58 @@
-You need to login:
-<form class="login-form" name="login" autocomplete="off">
-    <header>
-        <div>
-            Craft cart
-        </div>
-    </header>
-    <fieldset>
-        <div>
-            Email: <input name="uid" type="email" [(ngModel)]="uid">
-        </div>
-        <div>
-            Password: <input name="pwd" type="password" [(ngModel)]="pwd">
-        </div>
-        <div class="submit-btn">
-            <button class="login" type="submit" name="login" (click)="authService.login(uid, pwd)">
-                <i class="fa-sign-in fa"></i>
-            </button>
-        </div>
-    </fieldset>
-</form>
+<!--<mat-card class="example-card">-->
+    <!--<mat-card-header>-->
+        <!--<mat-card-title>Login</mat-card-title>-->
+    <!--</mat-card-header>-->
+    <!--<mat-card-content>-->
+        <!--<form class="example-form">-->
+            <!--<table class="example-full-width" cellspacing="0">-->
+                <!--<tr>-->
+                    <!--<td>-->
+                        <!--<mat-form-field class="example-full-width">-->
+                            <!--<input matInput placeholder="Email" [(ngModel)]="uid" name="username" required>-->
+                        <!--</mat-form-field>-->
+                    <!--</td>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>-->
+                        <!--<mat-form-field class="example-full-width">-->
+                            <!--<input matInput placeholder="Password" [(ngModel)]="pwd" type="password" name="password"-->
+                                   <!--required>-->
+                        <!--</mat-form-field>-->
+                    <!--</td>-->
+                <!--</tr>-->
+            <!--</table>-->
+        <!--</form>-->
+        <!--&lt;!&ndash;<mat-spinner [style.display]="showSpinner ? 'block' : 'none'"></mat-spinner>&ndash;&gt;-->
+    <!--</mat-card-content>-->
+    <!--<mat-card-actions>-->
+        <!--<button mat-raised-button (click)="authService.login(uid, pwd)" color="primary">Login</button>-->
+    <!--</mat-card-actions>-->
+<!--</mat-card>-->
+
+<mat-card>
+    <mat-card-title>Login</mat-card-title>
+    <mat-card-content>
+        <form [formGroup]="form" (ngSubmit)="authService.login(form)">
+            <p>
+                <mat-form-field>
+                    <input type="text" matInput placeholder="Username" formControlName="username">
+                </mat-form-field>
+            </p>
+
+            <p>
+                <mat-form-field>
+                    <input type="password" matInput placeholder="Password" formControlName="password">
+                </mat-form-field>
+            </p>
+
+            <p *ngIf="error" class="error">
+                {{ error }}
+            </p>
+
+            <div class="button">
+                <button type="submit" mat-button>Login</button>
+            </div>
+
+        </form>
+    </mat-card-content>
+</mat-card>

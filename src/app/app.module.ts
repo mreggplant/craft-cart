@@ -7,7 +7,7 @@ import {environment} from 'src/environments/environment';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {AuthModule} from './auth/auth.module';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {CustomMaterialModule} from './core/custom.material.module';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {CartModule} from './cart/cart.module';
@@ -23,6 +23,7 @@ import {StoreModule} from './store/store.module';
         AngularFireDatabaseModule,
         AuthModule,
         FormsModule,
+        ReactiveFormsModule,
         CustomMaterialModule,
         CartModule,
         StoreModule

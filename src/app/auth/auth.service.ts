@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {map} from 'rxjs/operators';
 import {Router} from '@angular/router';
+import {FormGroup} from '@angular/forms';
 
 @Injectable()
 export class AuthService {
@@ -11,10 +12,11 @@ export class AuthService {
     constructor(private router: Router, private angularFireAuth: AngularFireAuth) {
     }
 
-    login(email, pwd) {
-        this.angularFireAuth.auth.signInWithEmailAndPassword(email, pwd).then(v => {
+    login(form: FormGroup) {
+        this.angularFireAuth.auth.signInWithEmailAndPassword(form.controls.username.value, form.controls.password.value).then(v => {
             this.router.navigate(['store']);
-        }).catch(alert('incorrect credentials'));
+            console.log(v);
+        });
     }
 
     logout() {
