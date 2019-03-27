@@ -17,6 +17,10 @@ export class AppComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.cartService.getData();
+        this.authService.uid.subscribe(v => {
+            if (v) {
+                this.cartService.getData();
+            }
+        });
     }
 }

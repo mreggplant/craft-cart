@@ -6,23 +6,43 @@ import {FormGroup} from '@angular/forms';
 
 @Injectable()
 export class AuthService {
-    public currentUser;
+    public currentUser = null;
+    authState: FirebaseAuthState = null;
+    // TODO: cleanup
     public uid = this.angularFireAuth.authState.pipe(map(authState => {
         this.currentUser = authState;
         return (!authState ? null : authState.uid);
     }));
 
     constructor(private router: Router, private angularFireAuth: AngularFireAuth) {
+        this.angularFireAuth.authState.pipe(map(authState => {
+            this.currentUser = authState;
+            return (!authState ? null : authState.uid);
+        }));
     }
 
     login(form: FormGroup) {
-        this.angularFireAuth.auth.signInWithEmailAndPassword(form.controls.username.value, form.controls.password.value).then(v => {
-            this.router.navigate(['store']);
-        });
+        return this.angularFireAuth.auth.signInWithEmailAndPassword(form.controls.email.value, form.controls.password.value)
+            .then(() => this.router.navigate(['store']))
+            .catch(error => alert('invalid credentials!'));
     }
 
     logout() {
         this.angularFireAuth.auth.signOut();
         this.router.navigate(['login']);
     }
+
+    register(form: FormGroup) {
+        this.angularFireAuth.auth.createUserWithEmailAndPassword(form.controls.email.value, form.controls.password.value)
+            .then(() => {
+                alert('registration successful!');
+                this.router.navigate(['login']);
+            })
+            .catch(error => console.log(error));
+    }
+}
+
+export interface EmailPasswordCredentials {
+    email: string;
+    password: string;
 }

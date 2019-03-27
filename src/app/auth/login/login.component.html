@@ -4,7 +4,7 @@
         <form [formGroup]="form" (ngSubmit)="authService.login(form)">
             <p>
                 <mat-form-field>
-                    <input type="text" matInput placeholder="Username" formControlName="username">
+                    <input type="text" matInput placeholder="Email" formControlName="email">
                 </mat-form-field>
             </p>
 
@@ -20,6 +20,8 @@
 
             <div class="button">
                 <button type="submit" mat-button>Login</button>
+                <button mat-button [routerLink]="['/register']">Register</button>
+                <button mat-button [routerLink]="['/forgot-password']">Forgot Password</button>
             </div>
 
         </form>

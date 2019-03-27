@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {AuthService} from '../auth.service';
 import {FormControl, FormGroup} from '@angular/forms';
 
@@ -7,10 +7,10 @@ import {FormControl, FormGroup} from '@angular/forms';
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
     form: FormGroup = new FormGroup({
-        username: new FormControl(''),
+        email: new FormControl(''),
         password: new FormControl('')
     });
 
@@ -29,7 +29,5 @@ export class LoginComponent implements OnInit {
     constructor(public authService: AuthService) {
     }
 
-    ngOnInit() {
-    }
 
 }
