@@ -22,7 +22,7 @@ export class CartService {
     }
 
     getData() {
-        this.cart = this.db.list('/cart');
+        this.cart = this.db.list('/cart', ref => ref.orderByChild('user').equalTo(this.authService.currentUser.uid));
         this.cart.snapshotChanges().subscribe(changes => {
             this.items = [];
             return changes.map(c => {

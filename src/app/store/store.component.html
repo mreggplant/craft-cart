@@ -1,7 +1,7 @@
 <div class="store-list">
     <div *ngFor="let p of products" class="store-item">
         <div class="store-item-thumb">
-            Thumb: <img src='{{p.imageUrl}}'>
+            <img src='{{p.imageUrl}}'>
         </div>
         <div class="store-item-title">
             Title: {{p.title}}
@@ -13,7 +13,8 @@
             Description: {{p.description}}
         </div>
         <div class="store-item-price">
-            Price: $ {{p.price}} <button (click)="addToCart(p)">Add to Cart</button>
+            <div>Price: $ {{p.price}}</div>
+            <button (click)="addToCart(p)">Add to Cart</button>
         </div>
     </div>
 </div>
