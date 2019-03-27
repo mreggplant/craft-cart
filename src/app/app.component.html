@@ -1,21 +1,16 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" *ngIf='authService.uid | async'>
     <mat-toolbar-row>
-        <!--<span>{{ title }}</span>-->
-        <span *ngIf='authService.uid | async'>Hi {{authService.currentUser.email}}</span>
-        <span class="example-fill-remaining-space"></span>
-        <span class="align-center"></span>
-        <span class="example-spacer"></span>
-        <button mat-button [routerLink]="['/store']">Store</button>
-        <button mat-button [routerLink]="['/cart']">Cart</button>
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-            <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-            <button mat-menu-item (click)="authService.logout()">
+        <div>
+            <span>Hi {{authService.currentUser.email}}</span>
+            <button mat-button [routerLink]="['/store']">Shop</button>
+        </div>
+        <div>
+            <button mat-button [routerLink]="['/cart']"> Cart</button>
+            <button mat-button (click)="authService.logout()">
                 <mat-icon>logout</mat-icon>
                 <span>Logout</span>
             </button>
-        </mat-menu>
+        </div>
     </mat-toolbar-row>
 </mat-toolbar>
 

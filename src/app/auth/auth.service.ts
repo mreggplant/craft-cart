@@ -7,7 +7,7 @@ import {FormGroup} from '@angular/forms';
 @Injectable()
 export class AuthService {
     public currentUser = null;
-    authState: FirebaseAuthState = null;
+
     // TODO: cleanup
     public uid = this.angularFireAuth.authState.pipe(map(authState => {
         this.currentUser = authState;
