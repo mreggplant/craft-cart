@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {CartService} from '../../../cart/cart.service';
+import {AuthService} from '../../../auth/auth.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+    constructor(public authService: AuthService, private cartService: CartService) {
+    }
 
-  ngOnInit() {
-  }
-
+    ngOnInit() {
+        this.authService.uid.subscribe(v => {
+            if (v) {
+                this.cartService.getData();
+            }
+        });
+    }
 }

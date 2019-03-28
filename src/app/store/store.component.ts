@@ -30,7 +30,9 @@ export class StoreComponent implements OnInit {
     }
 
     showDetails(p): void {
-        const dialogRef = this.dialog.open(ProductComponent);
+        const dialogRef = this.dialog.open(ProductComponent, {
+            data: p
+        });
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);

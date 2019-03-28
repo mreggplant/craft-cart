@@ -1,37 +1,16 @@
-<header id="tr-header">
-  <table class="tr-header-component-table">
-      <thead>
-          <th class="tr-header-cell"></th>
-          <th class="tr-header-cell"></th>
-          <th class="tr-header-cell"></th>
-          <th class="tr-header-cell"></th>
-          <th class="tr-header-cell"></th>
-      </thead>
-      <tbody>
-          <tr>
-              <td class="tr-header-pictogram">
-                  <tr-pictogram></tr-pictogram>
-              </td>
-              <td class="tr-header-title">
-                  <span>{{title}}</span>
-              </td>
-              <td class="tr-header-user-info">
-                  <div dynamic-factory *ngFor="let meta of _userIconMeta" [meta]="meta"
-                       (onRender)="onRenderChild($event)"></div>
-              </td>
-              <td class="tr-header-user-name">
-                  <span>{{userInformation}}</span>
-              </td>
-              <td class="tr-header-user-control">
-                  <div>
-                      <div dynamic-factory *ngFor="let meta of _userLanguageMeta" [meta]="meta"
-                           (onRender)="onRenderChild($event)"></div>
-                      <span class="tr-user-splitter"></span>
-                      <div dynamic-factory *ngFor="let meta of _userControlMeta" [meta]="meta"
-                           (onRender)="onRenderChild($event)"></div>
-                  </div>
-              </td>
-          </tr>
-      </tbody>
-  </table>
-</header>
+<mat-toolbar color="primary" *ngIf='authService.uid | async'>
+    <mat-toolbar-row>
+        <div>
+            <span>Generic Store</span>
+            <button mat-button [routerLink]="['/store']">Shop</button>
+        </div>
+        <div>
+            <button mat-button [routerLink]="['/cart']"> Cart</button>
+            {{authService.currentUser.email}}
+            <button mat-button (click)="authService.logout()">
+                <mat-icon>logout</mat-icon>
+                <span>Logout</span>
+            </button>
+        </div>
+    </mat-toolbar-row>
+</mat-toolbar>

@@ -1,0 +1,47 @@
+:host {
+
+    .product-dialog {
+        display: flex;
+        flex-direction: column;
+        width: 550px;
+        height: 700px;
+
+        mat-dialog-content {
+            .product-item-thumb {
+                display: flex;
+                padding: 4px;
+                margin-bottom: 21px;
+                line-height: 1.42857143;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 0;
+                transition: all .2s ease-in-out;
+                overflow: hidden;
+                max-height: 450px;
+
+                img {
+                    width: 100%;
+                }
+            }
+        }
+
+        mat-dialog-actions {
+            .actions {
+                display: flex;
+                flex-grow: 1;
+                align-items: center;
+
+                .product-price {
+                    font-weight: bold;
+                    font-size: 14pt;
+                    color: green;
+                }
+
+                .product-actions {
+                    flex-grow: 1;
+                    justify-content: flex-end;
+                }
+            }
+        }
+    }
+}

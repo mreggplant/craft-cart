@@ -1,7 +1,9 @@
 :host {
-  mat-toolbar-row {
-    :first-child {
-      flex-grow: 1;
+    mat-toolbar-row {
+        justify-content: center;
+        :first-child {
+            flex-grow: 1;
+            max-width: 1080px;
+        }
     }
-  }
 }

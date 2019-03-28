@@ -1,37 +1,39 @@
 :host {
-  .store-list {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-evenly;
-
-    .store-item {
-      display: flex;
-      flex-direction: column;
-      width: 350px;
-      height: 350px;
-
-      .store-item-price {
+    .store-list {
+        padding: 20px;
         display: flex;
-        :first-child {
-          flex-grow: 1;
-        }
-      }
+        flex-flow: row wrap;
+        justify-content: space-evenly;
 
-      .store-item-thumb {
-        display: flex;
-        padding: 4px;
-        margin-bottom: 21px;
-        line-height: 1.42857143;
-        background-color: #fff;
-        border: 1px solid #ddd;
-        border-radius: 0;
-        transition: all .2s ease-in-out;
-        overflow: hidden;
+        .store-item {
+            display: flex;
+            flex-direction: column;
+            width: 350px;
+            height: 350px;
 
-        img {
-          width: 100%;
+            .store-item-price {
+                display: flex;
+                align-items: center;
+                :first-child {
+                    flex-grow: 1;
+                }
+            }
+
+            .store-item-thumb {
+                display: flex;
+                padding: 4px;
+                margin-bottom: 21px;
+                line-height: 1.42857143;
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 0;
+                transition: all .2s ease-in-out;
+                overflow: hidden;
+
+                img {
+                    width: 100%;
+                }
+            }
         }
-      }
     }
-  }
 }
