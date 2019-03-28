@@ -1,6 +1,6 @@
 <div class="store-list">
     <div *ngFor="let p of products" class="store-item">
-        <div class="store-item-thumb">
+        <div class="store-item-thumb" (click)="showDetails(p)">
             <img src='{{p.imageUrl}}'>
         </div>
         <div class="store-item-title">
