@@ -11,7 +11,7 @@ import {ProductComponent} from './product/product.component';
 })
 export class StoreComponent implements OnInit {
 
-    products: any[];
+    products: ProductInterface[];
 
     constructor(private db: AngularFireDatabase, private cart: CartService, private dialog: MatDialog) {
 
@@ -30,11 +30,22 @@ export class StoreComponent implements OnInit {
     }
 
     showDetails(p): void {
-        const dialogRef = this.dialog.open(ProductComponent);
+        const dialogRef = this.dialog.open(ProductComponent, {
+            data: p
+        });
 
         dialogRef.afterClosed().subscribe(result => {
             console.log(`Dialog result: ${result}`);
         });
     }
 
+}
+
+export interface ProductInterface {
+    id?: number;
+    title?: string;
+    description?: string;
+    imageUrl?: string;
+    price?: number;
+    user?: string;
 }

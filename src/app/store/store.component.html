@@ -1,20 +1,19 @@
 <div class="store-list">
-    <div *ngFor="let p of products" class="store-item">
-        <div class="store-item-thumb" (click)="showDetails(p)">
-            <img src='{{p.imageUrl}}'>
-        </div>
-        <div class="store-item-title">
-            Title: {{p.title}}
-        </div>
-        <div class="store-item-brand">
-            Brand: {{p.brand}}
-        </div>
-        <div class="store-item-description">
-            Description: {{p.description}}
-        </div>
-        <div class="store-item-price">
-            <div>Price: $ {{p.price}}</div>
-            <button mat-button (click)="addToCart(p)"><mat-icon>add_shopping_cart</mat-icon> Add to Cart</button>
+    <div class="store-list-container">
+        <div *ngFor="let p of products" class="store-item">
+            <div class="store-item-thumb" (click)="showDetails(p)">
+                <img src='{{p.imageUrl}}' title='{{p.title}}'>
+            </div>
+            <div class="store-item-title">
+                {{p.title}}
+            </div>
+            <div class="store-item-price">
+                <div>Price: $ {{p.price}}</div>
+                <button mat-button (click)="addToCart(p)">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                    Add to Cart
+                </button>
+            </div>
         </div>
     </div>
 </div>

@@ -10,9 +10,6 @@ import {CartService} from './cart/cart.service';
 })
 export class AppComponent implements OnInit {
 
-    title = 'craft-cart';
-
-
     constructor(public authService: AuthService, private cartService: CartService) {
     }
 
