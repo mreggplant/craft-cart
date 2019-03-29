@@ -1,17 +1,20 @@
 <div class="store-list">
     <div class="store-list-container">
-        <div *ngFor="let p of products" class="store-item">
-            <div class="store-item-thumb" (click)="showDetails(p)">
-                <img src='{{p.imageUrl}}' title='{{p.title}}'>
+        <div *ngFor="let item of products" class="store-item">
+            <div class="store-item-thumb" (click)="showDetails(item)">
+                <img src='{{item.imageUrl}}' title='{{item.title}}'>
             </div>
             <div class="store-item-title">
-                {{p.title}}
+                {{item.title}}
             </div>
             <div class="store-item-price">
-                <div>Price: $ {{p.price}}</div>
-                <button mat-button (click)="addToCart(p)">
+                <div>Price: $ {{item.price}}</div>
+                <button mat-button (click)="addToCart(item)" *ngIf="!inCart(item)">
                     <mat-icon>add_shopping_cart</mat-icon>
-                    Add to Cart
+                    Add to cart
+                </button>
+                <button mat-button [routerLink]="['/cart']" *ngIf="inCart(item)">
+                    <span>In Cart</span>
                 </button>
             </div>
         </div>

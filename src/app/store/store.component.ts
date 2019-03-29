@@ -3,6 +3,7 @@ import {AngularFireDatabase} from 'angularfire2/database';
 import {CartService} from '../cart/cart.service';
 import {MatDialog} from '@angular/material';
 import {ProductComponent} from './product/product.component';
+import {isNullOrUndefined} from 'util';
 
 @Component({
     selector: 'app-store',
@@ -11,7 +12,7 @@ import {ProductComponent} from './product/product.component';
 })
 export class StoreComponent implements OnInit {
 
-    products: ProductInterface[];
+    products: CartItem[];
 
     constructor(private db: AngularFireDatabase, private cart: CartService, private dialog: MatDialog) {
 
@@ -25,13 +26,13 @@ export class StoreComponent implements OnInit {
             });
     }
 
-    addToCart(p): void {
-        this.cart.add(p);
+    addToCart(item: CartItem): void {
+        this.cart.add(item);
     }
 
-    showDetails(p): void {
+    showDetails(item: CartItem): void {
         const dialogRef = this.dialog.open(ProductComponent, {
-            data: p
+            data: item
         });
 
         dialogRef.afterClosed().subscribe(result => {
@@ -39,13 +40,20 @@ export class StoreComponent implements OnInit {
         });
     }
 
+    inCart(item: CartItem): boolean {
+        return !isNullOrUndefined(this.cart.find(item));
+    }
+
 }
 
-export interface ProductInterface {
-    id?: number;
+export interface CartItem {
+    key?: string;
+    id?: string;
+    productId?: string;
     title?: string;
     description?: string;
     imageUrl?: string;
     price?: number;
     user?: string;
+    quantity?: number;
 }

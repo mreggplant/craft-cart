@@ -5,12 +5,15 @@ import {StoreComponent} from './store/store.component';
 import {CartComponent} from './cart/cart.component';
 import {RegistrationComponent} from './auth/registration/registration.component';
 import {ForgotPasswordComponent} from './auth/forgot-password/forgot-password.component';
+import {AuthGuard} from './auth/guards/auth.guard';
+import {HttpClientModule} from '@angular/common/http';
 
 
 const routes: Routes = [
     {
         path: 'cart',
         component: CartComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: 'login',
@@ -27,6 +30,7 @@ const routes: Routes = [
     {
         path: 'store',
         component: StoreComponent,
+        canActivate: [AuthGuard]
     },
     {
         path: '',
@@ -36,7 +40,8 @@ const routes: Routes = [
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule, HttpClientModule],
+    providers: [AuthGuard]
 })
 export class AppRoutingModule {
 }

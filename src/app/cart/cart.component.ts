@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {CartService} from './cart.service';
+import {CartItem} from '../store/store.component';
 import {map} from 'rxjs/operators';
 
 @Component({
@@ -9,20 +10,24 @@ import {map} from 'rxjs/operators';
 })
 export class CartComponent implements OnInit {
 
-    cartItems = 0;
-    cart: any[];
+    cart: CartItem[] = [];
 
     constructor(private cartService: CartService) {
     }
 
     ngOnInit() {
-        this.cartService.getData().snapshotChanges().pipe(map(v => {
-            this.cart = this.cartService.items;
-            this.cartItems = this.cart.length;
-        })).subscribe();
+        this.cartService.getData().snapshotChanges().pipe(map(() => this.cart = this.cartService.items)).subscribe();
     }
 
-    remove(item) {
+    increaseItem(item: CartItem) {
+        this.cartService.update(item);
+    }
+
+    decreaseItem(item: CartItem) {
+        this.cartService.removeOne(item);
+    }
+
+    remove(item: CartItem) {
         this.cartService.remove(item);
     }
 

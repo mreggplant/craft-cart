@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" *ngIf='authService.uid | async'>
+<mat-toolbar color="primary" *ngIf='authService.userInfo | async'>
     <mat-toolbar-row>
         <div>
             <span>Generic Store</span>
@@ -6,7 +6,7 @@
         </div>
         <div>
             <button mat-button [routerLink]="['/cart']"> Cart</button>
-            {{authService.currentUser.email}}
+            {{authService.userInfo?.email}}
             <button mat-button (click)="authService.logout()">
                 <mat-icon>logout</mat-icon>
                 <span>Logout</span>

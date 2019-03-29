@@ -10,12 +10,12 @@ import {CartService} from './cart/cart.service';
 })
 export class AppComponent implements OnInit {
 
-    constructor(public authService: AuthService, private cartService: CartService) {
+    constructor(public authService: AuthService, public cartService: CartService) {
     }
 
     ngOnInit() {
-        this.authService.uid.subscribe(v => {
-            if (v) {
+        this.authService.onUserInfoChange.subscribe(() => {
+            if (this.authService.userInfo) {
                 this.cartService.getData();
             }
         });

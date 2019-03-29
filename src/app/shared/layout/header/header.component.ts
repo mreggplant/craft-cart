@@ -13,8 +13,8 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.authService.uid.subscribe(v => {
-            if (v) {
+        this.authService.onUserInfoChange.subscribe(() => {
+            if (this.authService.userInfo) {
                 this.cartService.getData();
             }
         });

@@ -1,22 +1,52 @@
 <div class="cart-list">
-    <div *ngIf="cartItems === 0">
-        Your cart is empty!
-    </div>
-    <div *ngFor="let c of cart" class="cart-item">
-        <div class="cart-item-thumb">
-            Thumb: <img src='{{c.imageUrl}}'>
+    <div class="cart-list-container">
+        <div *ngIf="cart.length === 0">
+            Nothing here yet
         </div>
-        <div class="cart-item-title">
-            Title: {{c.title}}
+        <div class="cart-item-container" *ngIf="cart.length > 0">
+            <div class="cart-item-thumb cart-header">
+            </div>
+            <div class="cart-item-product cart-header">
+                Product Name
+            </div>
+            <div class="cart-item-quantity cart-header">
+                Quantity
+            </div>
+            <div class="cart-item-price cart-header">
+                Price
+            </div>
+            <div class="cart-item-total cart-header">
+                Total
+            </div>
+            <div class="cart-item-action cart-header">
+            </div>
         </div>
-        <div class="cart-item-brand">
-            Brand: {{c.brand}}
-        </div>
-        <div class="cart-item-description">
-            Description: {{c.description}}
-        </div>
-        <div class="cart-item-price">
-            Price: $ {{c.price}} <button mat-button (click)="remove(c)"><mat-icon>remove_shopping_cart</mat-icon> Remove</button>
+        <div *ngFor="let item of cart" class="cart-item-container cart-item-row">
+            <div class="cart-item-thumb">
+                <img src="{{item.imageUrl}}">
+            </div>
+            <div class="cart-item-product">
+                {{item.title}}
+            </div>
+            <div class="cart-item-quantity">
+                <div>
+                    <button [disabled]="item.quantity === 1" (click)="decreaseItem(item)">-</button>
+                    <span>{{item.quantity}}</span>
+                    <button (click)="increaseItem(item)">+</button>
+                </div>
+            </div>
+            <div class="cart-item-price">
+                $ {{item.price}}
+            </div>
+            <div class="cart-item-total">
+                $ {{(item.price * item.quantity)}}
+            </div>
+            <div class="cart-item-action">
+                <button mat-button (click)="remove(item)">
+                    <mat-icon>remove_shopping_cart</mat-icon>
+                    Remove
+                </button>
+            </div>
         </div>
     </div>
 </div>

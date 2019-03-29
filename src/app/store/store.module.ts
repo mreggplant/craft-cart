@@ -4,13 +4,15 @@ import {StoreComponent} from './store.component';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {CustomMaterialModule} from '../core/custom.material.module';
 import { ProductComponent } from './product/product.component';
+import {RouterModule} from '@angular/router';
 
 @NgModule({
     declarations: [StoreComponent, ProductComponent],
     imports: [
         CommonModule,
         AngularFireDatabaseModule,
-        CustomMaterialModule
+        CustomMaterialModule,
+        RouterModule
     ],
     exports: [StoreComponent],
     entryComponents: [ProductComponent]

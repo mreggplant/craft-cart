@@ -1,22 +1,61 @@
 :host {
     .cart-list {
         display: flex;
-        flex-flow: column;
-        justify-content: space-evenly;
+        flex-flow: row wrap;
+        justify-content: center;
 
-        .cart-item-thumb {
-            display: block;
-            padding: 4px;
-            margin-bottom: 21px;
-            line-height: 1.42857143;
-            background-color: #fff;
-            border: 1px solid #ddd;
-            border-radius: 0;
-            transition: all .2s ease-in-out;
+        .cart-list-container {
+            display: flex;
+            flex-grow: 1;
+            max-width: 800px;
+            flex-direction: column;
+            margin: 20px;
 
-            img {
-                width: 200px;
-                height: 220px;
+            .cart-item-container {
+                display: flex;
+                flex-grow: 1;
+
+                .cart-header {
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .cart-item-product {
+                    flex-grow: 1;
+                    display: flex;
+                    justify-content: center;
+                }
+
+                .cart-item-quantity, .cart-item-price, .cart-item-total {
+                    flex-grow: 1;
+                    display: flex;
+                    justify-content: flex-end;
+                }
+
+                .cart-item-quantity, .cart-item-price, .cart-item-total, .cart-item-action {
+                    width: 120px;
+                    max-width: 120px;
+                    flex-shrink: 1;
+
+                    span {
+                        min-width: 100px;
+                    }
+                }
+
+                .cart-item-thumb {
+                    max-width: 128px;
+                    flex-grow: 1;
+                    display: block;
+                    padding: 4px;
+                    margin-bottom: 21px;
+                    line-height: 1.42857143;
+                    transition: all .2s ease-in-out;
+
+                    img {
+                        width: 128px;
+                    }
+                }
             }
         }
     }
